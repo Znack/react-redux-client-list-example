@@ -13,3 +13,4 @@ export SurveyForm from './SurveyForm/SurveyForm';
 export WidgetForm from './WidgetForm/WidgetForm';
 export SearchForm from './Clients/SearchForm';
 export ClientsList from './Clients/ClientsList';
+export ClientDetails from './Clients/ClientDetails';

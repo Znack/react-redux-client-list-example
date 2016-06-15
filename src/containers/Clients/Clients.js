@@ -5,6 +5,7 @@ import * as clientsModule from 'redux/modules/clients';
 import { asyncConnect } from 'redux-async-connect';
 import { SearchForm } from 'components';
 import { ClientsList } from 'components';
+import { ClientDetails } from 'components';
 
 @asyncConnect([{
   deferred: true,
@@ -27,13 +28,14 @@ export default class Clients extends Component {
     error: PropTypes.string,
     loading: PropTypes.bool,
     loaded: PropTypes.bool,
+    chosen: PropTypes.number.isRequired,
 
     search: PropTypes.func.isRequired,
     choose: PropTypes.func.isRequired,
   };
 
   render() {
-    const {clients, searchQuery, search} = this.props;
+    const {clients, searchQuery, search, choose} = this.props;
     // const styles = require('./Clients.scss');
     return (
       <div className="container">
@@ -50,7 +52,14 @@ export default class Clients extends Component {
 
           <ClientsList
             clients={clients}
+            choose={choose}
           />
+        </div>
+
+        <div className="main-content">
+          {this.props.chosen < 0 && this.props.clients.length > this.props.chosen ?
+            '' : <ClientDetails client={this.props.clients[this.props.chosen]} />
+          }
         </div>
 
       </div>

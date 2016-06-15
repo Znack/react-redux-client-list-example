@@ -93,7 +93,6 @@ export const getFilteredClients = createSelector(
   getSearchQuery,
   getClients,
   (query, clients) => {
-    console.log(clients);
     if (!query) return clients;
 
     return clients.filter(
