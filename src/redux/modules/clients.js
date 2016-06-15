@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 export const LOAD = 'redux-example/clients/LOAD';
 export const LOAD_SUCCESS = 'redux-example/clients/LOAD_SUCCESS';
 export const LOAD_FAIL = 'redux-example/clients/LOAD_FAIL';
@@ -7,11 +9,12 @@ export const CHOOSE = 'redux-example/clients/CHOOSE';
 export const initialState = {
   loading: false,
   loaded: false,
-  clients: {},
+  clients: [],
   chosen: -1,
   searchQuery: '',
 };
 
+// ------ REDUCER ------
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOAD:
@@ -51,6 +54,7 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 
+// ------ ACTION CREATORS ------
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
@@ -65,3 +69,37 @@ export function choose(index) {
 export function search(query) {
   return { type: SEARCH, payload: {query} };
 }
+
+// ------ SELECTORS ------
+export const getIsLoadedFlag = (state) => state.clients.loaded;
+export const getSearchQuery = (state) => state.clients.searchQuery;
+export const getClients = (state) => state.clients.clients;
+const _getAllClientProperties = (client) => {
+  return [
+    client.general.firstName,
+    client.general.lastName,
+    client.job.company,
+    client.job.title,
+    client.contact.email,
+    client.contact.phone,
+    client.address.street,
+    client.address.city,
+    client.address.zipCode,
+    client.address.country,
+  ];
+};
+
+export const getFilteredClients = createSelector(
+  getSearchQuery,
+  getClients,
+  (query, clients) => {
+    console.log(clients);
+    if (!query) return clients;
+
+    return clients.filter(
+      (client)=> _getAllClientProperties(client).some(
+        (property) => property.toLowerCase().indexOf(query.toLowerCase()) > -1
+      )
+    );
+  }
+);
