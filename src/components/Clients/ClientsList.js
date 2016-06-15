@@ -13,7 +13,7 @@ export default class ClientsList extends Component {
     return (
       <div>
         {this.props.clients.map((client, index) => {
-          return (<ClientShortInfo client={client} index={index} choose={this.props.choose} />);
+          return (<ClientShortInfo key={index} client={client} index={index} choose={this.props.choose} />);
         })}
       </div>
     );

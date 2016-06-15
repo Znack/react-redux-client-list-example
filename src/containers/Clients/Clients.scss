@@ -1,35 +1,9 @@
-.widgets {
-  .refreshBtn {
-    margin-left: 20px;
+.container {
+  .leftSidebar {
+    float: left;
+    width: 40%;
   }
-  .idCol {
-    width: 5%;
-  }
-  .colorCol {
-    width: 20%;
-  }
-  .sprocketsCol {
-    width: 20%;
-    text-align: right;
-    input {
-      text-align: right;
-    }
-  }
-  .ownerCol {
-    width: 30%;
-  }
-  .buttonCol {
-    width: 25%;
-    :global(.btn) {
-      margin: 0 5px;
-    }
-  }
-  tr.saving {
-    opacity: 0.8;
-    :global(.btn) {
-      &[disabled] {
-        opacity: 1;
-      }
-    }
+  .mainContent {
+    margin-left: 45%;
   }
 }

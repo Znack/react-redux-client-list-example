@@ -36,15 +36,12 @@ export default class Clients extends Component {
 
   render() {
     const {clients, searchQuery, search, choose} = this.props;
-    // const styles = require('./Clients.scss');
+    const styles = require('./Clients.scss');
     return (
-      <div className="container">
-        <h1>
-          Clients Page
-        </h1>
+      <div className={styles.container + ' container clearfix'}>
         <Helmet title="Clients"/>
 
-        <div className="left-sidebar">
+        <div className={styles.leftSidebar}>
           <SearchForm
             query={searchQuery}
             search={search}
@@ -56,7 +53,7 @@ export default class Clients extends Component {
           />
         </div>
 
-        <div className="main-content">
+        <div className={styles.mainContent}>
           {this.props.chosen < 0 && this.props.clients.length > this.props.chosen ?
             '' : <ClientDetails client={this.props.clients[this.props.chosen]} />
           }

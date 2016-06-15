@@ -19,11 +19,19 @@ export default class ClientShortInfo extends Component {
     const {title} = this.props.client.job;
 
     return (
-      <a href="#" onClick={this.handleClick.bind(this)}>
-        <img src={avatar} />
-        <span>{firstName + ' ' + lastName}</span>
-        <span>{title}</span>
-      </a>
+      <div className="media">
+        <div className="media-left media-middle">
+          <a href="#" onClick={this.handleClick.bind(this)}>
+            <img src={avatar} className="media-object thumbnail" />
+          </a>
+        </div>
+        <div className="media-body media-middle">
+          <a href="#" onClick={this.handleClick.bind(this)}>
+            <span>{firstName + ' ' + lastName}</span> <br/>
+            <span>{title}</span>
+          </a>
+        </div>
+      </div>
     );
   }
 }

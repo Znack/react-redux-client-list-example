@@ -14,12 +14,12 @@ export default class ClientsList extends Component {
 
     return (
       <div>
-        <img src={avatar} />
-        <span>{firstName + ' ' + lastName}</span>
-        <span>{title + ' &#8211; ' + company}</span>
-        <span>Email: {email}</span>
-        <span>Phone: {phone}</span>
-        <span>Address: {street + ' ' + zipCode + ' ' + city + ' ' + country}</span>
+        <img src={avatar} className="thumbnail" />
+        <h3>{firstName + ' ' + lastName}</h3>
+        <p>{title + ' – ' + company}</p>
+        <p>Email: {email}</p>
+        <p>Phone: {phone}</p>
+        <p>Address: {street + ', ' + zipCode + ', ' + city + ', ' + country}</p>
       </div>
     );
   }
