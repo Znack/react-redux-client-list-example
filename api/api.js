@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';
@@ -16,6 +17,7 @@ const server = new http.Server(app);
 const io = new SocketIo(server);
 io.path('/ws');
 
+app.use(express.static(path.join(__dirname, '..', 'static')));
 app.use(session({
   secret: 'react and redux rule!!!!',
   resave: false,
